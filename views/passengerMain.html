@@ -1,10 +1,68 @@
 <html>
     <head>
         <title>Busking</title>
+        <style>
+            #container {
+                display: table;
+
+                width: 90%;
+                height: 90%;
+                background: white;
+                margin: 100 auto;
+            }
+            .inner {
+                display: table-cell;
+
+                vertical-align: middle;
+                text-align: center;
+            }
+            .centered {
+                display: inline-block;
+                position: relative;
+
+                width: 80%;
+                padding: 0.5em;
+                background: lightgray;
+            }
+            #logo {
+                width: 450;
+                margin: 50 0 80 120
+            }
+            #search-box {
+                position: relative;
+                display: inline-block;
+
+                width: 80%;
+                background: lightgray;
+                border: 0;
+                outline: 0;
+
+                vertical-align: middle;
+                text-align: center;
+                font-size: 1.5em;
+            }
+            #search-btn {
+                position: relative;
+                display: inline-block;
+
+                width: 10%;
+                background: lightgray;
+                border: 0;
+                outline: 0;
+
+                vertical-align: middle;
+                text-align: center;
+            }
+        </style>
         <script>
           function searchBus() {
-              var query = document.getElementById("query").value;
+              var query = document.getElementById("search-box").value;
 
+              //아무 것도 입력하지 않은 경우
+              if(query.length === 0) {
+                  alert("필수 항목을 입력 해주세요. 버스 번호, #번호 또는 차량 등록 번호 형태로 입력해주세요");      
+              }
+              
               //버스 차량번호인 경우
               var koreanRex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
               if(koreanRex.test(query)) {
@@ -44,16 +102,21 @@
               //window.location = "./busMap.ejs?query=" + query;
           }
         </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div style="width: 80%; height: 80%; margin: 40px auto; background: red;" id="container">
-            <img style ="width:50%; height:30%; display: table-cell; vertical-align: middle; text-align: center;" src="https://about.canva.com/wp-content/uploads/sites/3/2016/08/Band-Logo.png" />
-            <br/>
-            <div>
-              <input style="width:500; height: 100; font-size: 24; background-color: blue" type="text" id="query" name="query" maxlength="9" placeholder="버스 번호, #번호, 차량등록번호를 입력해주세요"/>
+        <div id="container">
+            <div class="inner">
+                <div>
+                    <img id="logo" src="./icons/logo.png"/>
+                </div>
+                <div class="centered">
+                    <div>
+                        <input id="search-box" type="text" name="query" maxlength="9" placeholder="ex. 153, #123456, 서울12가3456" required/>
+
+                        <input id="search-btn" onclick="searchBus()" type="image" src="./icons/search.png" />
+                    </div>
+                </div>
             </div>
-            <button style="width:200; height: 200; font-size: 24" onclick="searchBus()">검색</button>
         </div>
     </body>
 </html>

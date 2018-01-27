@@ -39,7 +39,7 @@
 
                 vertical-align: middle;
                 text-align: center;
-                font-size: 1.5em;
+                font-size: 2em;
             }
             #search-btn {
                 position: relative;
@@ -60,9 +60,9 @@
 
               //아무 것도 입력하지 않은 경우
               if(query.length === 0) {
-                  alert("필수 항목을 입력 해주세요. 버스 번호, #번호 또는 차량 등록 번호 형태로 입력해주세요");      
+                  alert("필수 항목을 입력 해주세요. 버스 번호, #번호 또는 차량 등록 번호 형태로 입력해주세요");
               }
-              
+
               //버스 차량번호인 경우
               var koreanRex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
               if(koreanRex.test(query)) {

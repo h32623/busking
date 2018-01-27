@@ -9,13 +9,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function temperShow(){
-  if(document.temper.hot.style.display == "none"){
-    document.temper.hot.style.display = "inline";
-    document.temper.cool.style.display = "inline";
+  if(document.temperHot.hot.style.display == "none"){
+    document.temperHot.hot.style.display = "inline";
+    document.temperCold.cool.style.display = "inline";
   }
   else{
-    document.temper.hot.style.display = "none";
-    document.temper.cool.style.display = "none";
+    document.temperHot.hot.style.display = "none";
+    document.temperCold.cool.style.display = "none";
   }
 }
 function askShow(){
@@ -34,9 +34,16 @@ function praiseShow(){
   else
     document.praise.submit.style.display = "none";
 }
-function temperSubmit(){
-  alert('의견을 보냈습니다!');
-  temper.submit();
+function temperSubmit(temper){
+
+  var temper = temper;
+  if( temper == "hot" ){
+    alert('의견을 보냈습니다!');
+    temperHot.submit();
+  }else{
+    alert('의견을 보냈습니다!');
+    temperCool.submit();
+  }
 }
 function askSubmit(){
   if(document.ask.content.value == ""){
@@ -44,7 +51,7 @@ function askSubmit(){
     return false;
   }
   alert('문의를 보냈습니다!');
-  temper.submit();
+  ask.submit();
 }
 </script>
 </head>
@@ -53,13 +60,16 @@ function askSubmit(){
 <br><br><br>
   <ul class="list-group">
     <li class="list-group-item" onClick="temperShow()">온도<span class="caret"/></li>
-    <form name="temper">
-      <input type="button" onClick="temperSubmit()" name="hot" class="btn btn-danger" value="더워용" style="display:none"/><input type="button" onClick="temperSubmit()" class="btn btn-primary" name="cool" value="추워용" style="display:none"/>
-    </form>
+    <form name="temperHot">
+  <input id="hotButton" type="button" onClick="temperSubmit('hot')" name="hot" class="btn btn-danger" value="더워용" style="display:none"/>
+</form>
+<form name="temperCold">
+  <input id="coldButton" type="button" onClick="temperSubmit('cold')" class="btn btn-primary" name="cold" value="추워용" style="display:none"/>
+</form>
     <li class="list-group-item" onClick="askShow()">문의하기<span class="caret"/></li>
-    <form name="ask">
+    <form name="ask" action="post">
       <textarea required="required" class="form-control" placeholder="Enter Content" name="content" rows="3" style="display:none"></textarea>
-      <button type="button" onClick="askSubmit()" name="submit" class="btn btn-danger" style="display:none">전송</button>
+      <input type="button" onClick="askSubmit()" name="submit" class="btn btn-danger" style="display:none" value="전송"/>
     </form>
     <li class="list-group-item" onClick="praiseShow()">칭찬해요<span class="caret"/></li>
     <form name="praise">

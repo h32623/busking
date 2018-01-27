@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>버스킹</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function temperShow(){
+  if(document.temper.hot.style.display == "none"){
+    document.temper.hot.style.display = "inline";
+    document.temper.cool.style.display = "inline";
+  }
+  else{
+    document.temper.hot.style.display = "none";
+    document.temper.cool.style.display = "none";
+  }
+}
+function askShow(){
+  if(document.ask.content.style.display == "none"){
+    document.ask.content.style.display = "block";
+    document.ask.submit.style.display = "block";
+  }
+  else{
+    document.ask.content.style.display = "none";
+    document.ask.submit.style.display = "none";
+  }
+}
+function praiseShow(){
+  if(document.praise.submit.style.display == "none")
+    document.praise.submit.style.display = "block";
+  else
+    document.praise.submit.style.display = "none";
+}
+function temperSubmit(){
+  alert('의견을 보냈습니다!');
+  temper.submit();
+}
+function askSubmit(){
+  if(document.ask.content.value == ""){
+    alert('내용을 입력하세요!');
+    return false;
+  }
+  alert('문의를 보냈습니다!');
+  temper.submit();
+}
+</script>
+</head>
+<body>
+<center>
+<br><br><br>
+  <ul class="list-group">
+    <li class="list-group-item" onClick="temperShow()">온도<span class="caret"/></li>
+    <form name="temper">
+      <input type="button" onClick="temperSubmit()" name="hot" class="btn btn-danger" value="더워용" style="display:none"/><input type="button" onClick="temperSubmit()" class="btn btn-primary" name="cool" value="추워용" style="display:none"/>
+    </form>
+    <li class="list-group-item" onClick="askShow()">문의하기<span class="caret"/></li>
+    <form name="ask">
+      <textarea required="required" class="form-control" placeholder="Enter Content" name="content" rows="3" style="display:none"></textarea>
+      <button type="button" onClick="askSubmit()" name="submit" class="btn btn-danger" style="display:none">전송</button>
+    </form>
+    <li class="list-group-item" onClick="praiseShow()">칭찬해요<span class="caret"/></li>
+    <form name="praise">
+      <input type="submit" name="submit" onClick="JavaScript:alert('좋아요')" class="btn btn-danger" style="display:none" value="좋아요"/>
+    </form>
+  </ul>
+</center>
+</body>
+</html>

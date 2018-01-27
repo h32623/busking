@@ -47,9 +47,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <img class="col-sm-12 col-md-4" src="https://about.canva.com/wp-content/uploads/sites/3/2016/08/Band-Logo.png" />
-        <br/>
-        <input class="col-sm-12 col-md-4" style="width:500; height: 30;" type="text" id="query" name="query" maxlength="9" placeholder="버스 번호, #번호, 차량등록번호를 입력해주세요"/>
-        <button class="col-sm-12 col-md-3" onclick="searchBus()">검색</button>
+        <div style="width: 80%; height: 80%; margin: 40px auto; background: red;" id="container">
+            <img style ="width:50%; height:30%; display: table-cell; vertical-align: middle; text-align: center;" src="https://about.canva.com/wp-content/uploads/sites/3/2016/08/Band-Logo.png" />
+            <br/>
+            <div>
+              <input style="width:500; height: 100; font-size: 24; background-color: blue" type="text" id="query" name="query" maxlength="9" placeholder="버스 번호, #번호, 차량등록번호를 입력해주세요"/>
+            </div>
+            <button style="width:200; height: 200; font-size: 24" onclick="searchBus()">검색</button>
+        </div>
     </body>
 </html>
